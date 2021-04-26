@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @events = Event.where(author_id:current_user.id).order("date ASC")
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :email)
