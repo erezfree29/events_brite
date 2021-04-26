@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   delete 'sign_out', to: 'sessions#destroy'
   resources :users ,only: [:new, :create, :show]
-
+  resources :events ,only: [:new, :create, :show, :index]
 end
