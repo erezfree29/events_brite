@@ -22,8 +22,12 @@ class EventsController < ApplicationController
   end
 
   def attend
-    EventAttendee.create(attendee_id:current_user.id,attended_event_id:params[:id])
-    redirect_to user_path(current_user), flash: {well_done: "event booked"}
+    if EventAttendee.where(attendee_id:current_user.id).where(attended_event_id:params[:id]).length == 0
+      EventAttendee.create(attendee_id:current_user.id,attended_event_id:params[:id])
+      redirect_to user_path(current_user) ,flash: {success: "you have booked a spot in the event" }
+    else
+      redirect_to events_path, flash: {error: "you are already booked to this event" }
+    end    
   end
 
   private
