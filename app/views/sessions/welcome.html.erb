@@ -3,6 +3,6 @@
 <p><i><%= "#{name}: #{message}" %></i></p>
 <% end %>
 
-<div><%=link_to "See events created events",user_path(current_user)%></div>
+<div><%=link_to "See your events",user_path(current_user) if logged_in?%></div>
  <div><%=link_to "View all events",events_path%></div>
  <div><%=link_to "Create an event",new_event_path%></div>

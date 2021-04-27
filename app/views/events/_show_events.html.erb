@@ -1,6 +1,0 @@
-<%if @events != nil%>
-  <%@events.each_with_index do |event,index|%>
-    <h1><%=index + 1%>) Event Name <%=event.name%></h1>
-    <h2>Date:<%=event.date%></h2>
-  <% end %>
-<% end %>

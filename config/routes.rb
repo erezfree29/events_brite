@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
   resources :users ,only: [:new, :create, :show]
   resources :events ,only: [:new, :create, :show, :index]
+  post '/attend/:id', to: 'events#attend'
 end
