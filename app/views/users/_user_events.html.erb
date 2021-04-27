@@ -4,6 +4,7 @@
   <%@events_ids_array.each_with_index do |event_id,index|%>
   <% if  Event.all[event_id - 1].date < Time.now%>
     <h1><%= index + 1 %>) name: <%=Event.all[event_id - 1].name %></h1>
+    <h2>Location: <%= Event.all[event_id - 1].location%></h2>
     <h2>Date: <%= Event.all[event_id - 1].date %></h2>
     <% end %>
   <% end %>
@@ -12,6 +13,7 @@
   <%@events_ids_array.each_with_index do |event_id,index|%>
   <% if  Event.all[event_id - 1].date > Time.now%>
     <h1><%= index + 1 %>) name: <%=Event.all[event_id - 1].name %></h1>
+     <h2>Location: <%= Event.all[event_id - 1].location %></h2>
     <h2>Date: <%= Event.all[event_id - 1].date %></h2>
     <% end %>
   <% end %>
