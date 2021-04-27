@@ -7,7 +7,6 @@
       <h1><%=index + 1%>) Name: <%=event.name%> </h1>
       <h2>Date: <%=event.date%> </h2>
       <h2>Location: <%=event.location%> </h2>
-      <%=link_to 'book',"/attend/#{event.id}",method: :post%>
     <% end %>  
   <% end %>
   <h1>future events</h1>
