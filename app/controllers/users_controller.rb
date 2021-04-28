@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @events = Event.where(author_id:current_user.id)
     events_active_record = EventAttendee.select(:attended_event_id).where(attendee_id: current_user.id)
     @events_ids_array = []
     events_active_record.each do |record|

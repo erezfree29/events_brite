@@ -2,3 +2,6 @@
 <div><%=link_to "View all events",events_path%></div>
 <div><%=link_to "Create an event",new_event_path%></div>
 
+<%- flash.each do |name, message| %>
+<p><i><%= "#{name}: #{message}" %></i></p>
+<% end %>

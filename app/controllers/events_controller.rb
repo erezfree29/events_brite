@@ -20,10 +20,19 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    users_active_record = EventAttendee.select(:attendee_id).where(attended_event_id:params[:id])
+    @users_ids_array = []
+    users_active_record.each do |record|
+      @users_ids_array << record[:attendee_id]
+    end
   end
 
   def index
+    if logged_in?
     @events = Event.all.order('date ASC')
+    else
+      redirect_to root_path, flash: { not_logged_in: 'please log in first' }
+    end
   end
 
   def attend

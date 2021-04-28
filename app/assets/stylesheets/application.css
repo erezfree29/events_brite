@@ -15,4 +15,16 @@
  */
 .nav_bar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: silver;
+}
+
+.sign_in_links {
+  display: flex;
+  padding-left: 50px;
+}
+
+.home {
+  padding-right: 15px;
 }
