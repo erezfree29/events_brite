@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
+
   def new
-    @event = Event.new
+    if logged_in?
+      @event = Event.new
+    else
+      redirect_to root_path, flash: { not_logged_in: 'please log in first' }
+    end
   end
 
   def create
