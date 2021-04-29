@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    users_active_record = EventAttendee.select(:attendee_id).where(attended_event_id:params[:id])
+    users_active_record = EventAttendee.select(:attendee_id).where(attended_event_id: params[:id])
     @users_ids_array = []
     users_active_record.each do |record|
       @users_ids_array << record[:attendee_id]
@@ -42,6 +42,7 @@ class EventsController < ApplicationController
       redirect_to events_path, flash: { error: 'you are already booked to this event' }
     end
   end
+
   private
 
   def event_params
