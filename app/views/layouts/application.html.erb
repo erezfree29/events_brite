@@ -12,17 +12,8 @@
 
   <body>
   <br>
-  <div class="nav_bar">
-  <div class="sign_in_links">
-     <%=link_to 'Home', root_path ,class: 'home'%>
-      <%= button_to "Sign up",new_user_path, method: :get if (!logged_in? && controller_name != 'users')%><br>
-      <%= button_to "Log in",new_session_path, method: :get if !logged_in?%><br>
-      <%= button_to "Sign out",sign_out_path, method: :delete if logged_in?%><br>
-  </div>
-      <%if logged_in?%>
-        <h1><%=current_user.name%>-logged in</h1>
-      <% end %>
-  </div>
+    <%=nav_bar%>
+    <%=logged_in_name%>
     <%= yield %><br>
   </body>
 

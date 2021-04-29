@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   def new
     if logged_in?
       @event = Event.new
@@ -9,8 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.create(event_params)
-    @event.author_id = current_user.id
+    @event = current_user.events.build(event_params)
     if @event.save
       redirect_to event_path(@event), flash: { well_done: 'event created!' }
     else
@@ -29,7 +27,8 @@ class EventsController < ApplicationController
 
   def index
     if logged_in?
-    @events = Event.all.order('date ASC')
+      @past_events = Event.all.order('date ASC').previous
+      @upcoming_events = Event.all.order('date ASC').upcoming
     else
       redirect_to root_path, flash: { not_logged_in: 'please log in first' }
     end
@@ -43,7 +42,6 @@ class EventsController < ApplicationController
       redirect_to events_path, flash: { error: 'you are already booked to this event' }
     end
   end
-
   private
 
   def event_params
