@@ -1,23 +1,25 @@
 <br><br>
-<%if @events_ids_array != nil%>
-   <h1>Past Event</h1>
-  <%@events_ids_array.each_with_index do |event_id,index|%>
-  <% if  Event.all[event_id - 1].date < Time.now%>
-    <h1><%= index + 1 %>) name: <%=Event.all[event_id - 1].name %></h1>
-    <h2>Location: <%= Event.all[event_id - 1].location%></h2>
-    <h2>Date: <%= Event.all[event_id - 1].date %></h2>
+  <%if  @past_events != nil %>
+    <h1>Past Event</h1>
+    <%@past_events.each_with_index do |event,index|%>
+      <h1><%= index + 1 %>) name: <%=event.name %></h1>
+      <h2>Location: <%=event.location%></h2>
+      <h2>Date: <%=event.date%></h2>
     <% end %>
   <% end %>
   
-  <h1>Future Events</h1>
-  <%@events_ids_array.each_with_index do |event_id,index|%>
-  <% if  Event.all[event_id - 1].date > Time.now%>
-    <h1><%= index + 1 %>) name: <%=Event.all[event_id - 1].name %></h1>
-     <h2>Location: <%= Event.all[event_id - 1].location %></h2>
-    <h2>Date: <%= Event.all[event_id - 1].date %></h2>
+
+  <%if @future_events  != nil %>
+    <h1>Future events</h1>
+    <% @future_events.each_with_index do |event,index|%>
+      <h1><%= index + 1 %>) name: <%=event.name %></h1>
+      <h2>Location: <%=event.location%></h2>
+      <h2>Date: <%=event.date%></h2>
     <% end %>
   <% end %>
-<% end %>
+  
+
+
 <% if @created_events != nil%>
   <h1>Created events</h1>
   <%@created_events.each_with_index do |event,index|%>
@@ -26,6 +28,5 @@
      <h2>Date: <%=event.date%></h2>
   <% end %>
 <% end %>
-
 
 

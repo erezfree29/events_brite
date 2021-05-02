@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.created_events.build(event_params)
     if @event.save
       redirect_to event_path(@event), flash: { well_done: 'event created!' }
     else
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    users_active_record = EventAttendee.select(:attendee_id).where(attended_event_id: params[:id])
+    users_active_record = EventAttendee.select(:attendee_id).where(event_id: params[:id])
     @users_ids_array = []
     users_active_record.each do |record|
       @users_ids_array << record[:attendee_id]
@@ -35,8 +35,8 @@ class EventsController < ApplicationController
   end
 
   def attend
-    if EventAttendee.where(attendee_id: current_user.id).where(attended_event_id: params[:id]).length.zero?
-      EventAttendee.create(attendee_id: current_user.id, attended_event_id: params[:id])
+    if EventAttendee.where(user_id: current_user.id).where(event_id: params[:id]).length.zero?
+      EventAttendee.create(user_id: current_user.id,event_id: params[:id])
       redirect_to user_path(current_user), flash: { success: 'you have booked a spot in the event' }
     else
       redirect_to events_path, flash: { error: 'you are already booked to this event' }
