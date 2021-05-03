@@ -26,6 +26,9 @@
     <h1><%= index + 1 %>) Name: <%=event.name%></h1>
     <h2>Location: <%=event.location%></h2>
      <h2>Date: <%=event.date%></h2>
+      <%= link_to "Cancel this event", event_path(event),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
   <% end %>
 <% end %>
 
