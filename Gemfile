@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 # helps manage rails console
 gem 'hirb', '~> 0.7.3'
+# tag helper for rails helpers
+gem 'record_tag_helper', '~> 1.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
