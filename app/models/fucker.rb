@@ -1,0 +1,2 @@
+class Fucker < ApplicationRecord
+end

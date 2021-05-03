@@ -18,11 +18,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    users_active_record = EventAttendee.select(:attendee_id).where(event_id: params[:id])
-    @users_ids_array = []
-    users_active_record.each do |record|
-      @users_ids_array << record[:attendee_id]
-    end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path
   end
 
   def index
@@ -33,6 +34,7 @@ class EventsController < ApplicationController
       redirect_to root_path, flash: { not_logged_in: 'please log in first' }
     end
   end
+
 
   def attend
     if EventAttendee.where(user_id: current_user.id).where(event_id: params[:id]).length.zero?
