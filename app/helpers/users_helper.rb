@@ -28,7 +28,7 @@ module UsersHelper
 
   def future_events
     if @future_events != nil
-        content_tag_for(:tr, @future_events) do |event|
+        content_tag_for(:h1, @future_events) do |event|
           content_tag(:h2) do
           ("#{@future_events.index(event) + 1})") +   
             ("#{event.name}") + ("to take place on ") + ("#{event.date}")
@@ -47,18 +47,15 @@ module UsersHelper
 
   def created_events
     if @created_events != nil
-        content_tag_for(:tr, @created_events) do |event|
+        content_tag_for(:h1, @created_events) do |event|
           content_tag(:h2) do
-          ("#{@created_events.index(event) + 1})") +   
+            ("#{@created_events.index(event) + 1})") +   
             ("#{event.name}") + ("to take place on ") + ("#{event.date}")
           end
         end   
     end
   end
-
-
 end
-
 
 
 

@@ -8,10 +8,9 @@
 <%=@event.date%>
 <h1>Registered users</h1>
 <%=@event.attendees.length%>
-<%@event.attendees.each_with_index do |attendee,index|%>
-  <h2><%=index + 1 %>) Name:<%=attendee.name%></h2>
-  <h3>Email:<%=attendee.email%> </h3>
-<% end %>
+ <%=show_attendees%>
+ <%=cancel%>
+
 
 
 

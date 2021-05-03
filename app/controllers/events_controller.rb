@@ -22,8 +22,10 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
-    redirect_to root_path
+    if current_user.created_events.include?(@event)
+      @event.destroy
+      redirect_to root_path
+    end
   end
 
   def index

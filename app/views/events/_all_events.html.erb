@@ -1,23 +1,4 @@
-
-<br><br><br>
-<%if @past_events  != nil%>
-<h1>past events</h1>
-  <%@past_events .each_with_index do |event,index|%>
-      <h1><%=index + 1%>) Name: <%=event.name%> </h1>
-      <h2>Date: <%=event.date%> </h2>
-      <h2>Location: <%=event.location%> </h2>
-       <h2><%=link_to event_path(event)  do%></h2> 
-        See details
-       <% end %>       
-  <% end %>
-  <h1>future events</h1>
-  <%@upcoming_events .each_with_index do |event,index|%>
-      <h1><%=index + 1%>) Name: <%=event.name%> </h1>
-      <h2>Location: <%=event.location%></h2>
-      <h2>Date: <%=event.date%> </h1>
-       <h2><%=link_to event_path(event)  do%></h2> 
-        See details
-       <% end %> <br>
-      <%=link_to 'book',"/attend/#{event.id}",method: :post%>
-    <% end %>  
-<% end %>
+<%=past_events_header%>
+<%=past_events%>
+<%=upcoming_events_header%>
+<%=upcoming_events%>
