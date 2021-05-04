@@ -22,10 +22,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    if current_user.created_events.include?(@event)
-      @event.destroy
-      redirect_to root_path
-    end
+    @event.destroy redirect_to root_path if current_user.created_events.include?(@event)
   end
 
   def index
@@ -37,10 +34,9 @@ class EventsController < ApplicationController
     end
   end
 
-
   def attend
     if EventAttendee.where(user_id: current_user.id).where(event_id: params[:id]).length.zero?
-      EventAttendee.create(user_id: current_user.id,event_id: params[:id])
+      EventAttendee.create(user_id: current_user.id, event_id: params[:id])
       redirect_to user_path(current_user), flash: { success: 'you have booked a spot in the event' }
     else
       redirect_to events_path, flash: { error: 'you are already booked to this event' }

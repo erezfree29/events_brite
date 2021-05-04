@@ -28,3 +28,17 @@
 .home {
   padding-right: 15px;
 }
+
+.past_events {
+  display: flex;
+}
+
+.upcoming_events {
+  display: flex;
+}
+
+.past_events_index,
+.upcoming_events_index,
+.upcoming_events_see {
+  margin-right: 40px;
+}

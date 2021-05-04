@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'spec_helper'
-RSpec.describe  EventAttendee, type: :model do
+RSpec.describe EventAttendee, type: :model do
   it 'validations' do
     expect { should validate_presence_of(event_id) }
   end

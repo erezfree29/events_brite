@@ -3,8 +3,8 @@ require 'spec_helper'
 
 RSpec.describe Event, type: :model do
   it 'must have a name' do
-      @event = Event.new(date:Time.now,date:Time.now,location:"the beach",author_id:1)
-      expect(@event).to_not be_valid
+    event = Event.new(date: Time.now, location: 'the beach', author_id: 1)
+    expect(event).to_not be_valid
   end
 
   describe 'ActiveRecord associations' do
