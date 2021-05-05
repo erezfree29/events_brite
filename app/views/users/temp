@@ -1,0 +1,21 @@
+<br><br>
+  <%if  @past_events != nil %>
+    <h1>Past Event</h1>
+    <%@past_events.each_with_index do |event,index|%>
+      <h1><%= index + 1 %>) name: <%=event.name %></h1>
+      <h2>Location: <%=event.location%></h2>
+      <h2>Date: <%=event.date%></h2>
+    <% end %>
+  <% end %>
+
+
+  
+  <%if @future_events  != nil %>
+    <h1>Future events</h1>
+    <% @future_events.each_with_index do |event,index|%>
+      <h1><%= index + 1 %>) name: <%=event.name %></h1>
+      <h2>Location: <%=event.location%></h2>
+      <h2>Date: <%=event.date%></h2>
+    <% end %>
+  <% end %>
+  

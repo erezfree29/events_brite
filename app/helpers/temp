@@ -1,0 +1,3 @@
+ link_to 'see event details',event_path(event)
+
+  @event = Event.new(date: Time.now, location: 'the beach', author_id: 1)
